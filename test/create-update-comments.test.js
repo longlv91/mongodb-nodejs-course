@@ -36,7 +36,7 @@ describe("Create/Update Comments", async () => {
     const commentsCollection = await global.mflixClient
       .db(process.env.MFLIX_NS)
       .collection("comments")
-    const deleteResult = await commentsCollection.deleteMany({
+    await commentsCollection.deleteMany({
       text: "fa-fe-fi-fo-fum",
     })
   })
@@ -48,7 +48,6 @@ describe("Create/Update Comments", async () => {
       comment.text,
       date,
     )
-
     expect(postCommentResult.insertedCount).toBe(1)
     expect(postCommentResult.insertedId).not.toBe(null)
 
